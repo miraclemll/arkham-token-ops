@@ -1,0 +1,6 @@
+interface:
+  display_name: "Arkham Token Ops"
+  short_description: "Analyze tokens and run Arkham monitors"
+  default_prompt: "Use $arkham-token-ops to analyze a token, inspect an address, or deploy a token transfer monitor on macOS."
+policy:
+  allow_implicit_invocation: true

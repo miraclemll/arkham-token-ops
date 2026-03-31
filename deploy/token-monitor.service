@@ -1,0 +1,15 @@
+[Unit]
+Description=Token Monitor via Arkham API
+After=network.target
+
+[Service]
+Type=simple
+User=REPLACE_WITH_YOUR_USER
+WorkingDirectory=REPLACE_WITH_PROJECT_PATH
+EnvironmentFile=REPLACE_WITH_PROJECT_PATH/.env
+ExecStart=REPLACE_WITH_PROJECT_PATH/.venv/bin/python REPLACE_WITH_PROJECT_PATH/monitor.py --mode poll --threshold 5000 --interval 60
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
