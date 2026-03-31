@@ -6,7 +6,7 @@
 2. 一个可复用的 `arkham-token-ops` skill，适合安装到 Codex / OpenClaw，在 macOS 上做通用 token 分析、监控和 `launchd` 部署
 
 如果你只是想快速监控某个目标代币，可以用旧脚本。
-如果你想兼容其他代币、做地址分析、或者让同事在 Codex 里直接调用，优先使用 `skills/arkham-token-ops/`。
+如果你想兼容其他代币、做地址分析、或者让其他人在 Codex 里直接调用，优先使用 `skills/arkham-token-ops/`。
 
 ---
 
@@ -18,7 +18,7 @@
 | 目标代币轮询监控 | `monitor.py --mode poll` | 持续监控某个代币并推送 Telegram |
 | 通用 token 分析 | `skills/arkham-token-ops/scripts/arkham_token_ops.py` | 分析任意 token、地址、最近或大额转账 |
 | macOS 常驻监控 | `arkham-token-ops monitor install` | 在 Mac mini 上通过 `launchd` 长期运行 |
-| Codex / OpenClaw skill | `skills/arkham-token-ops/` | 让其他同事安装 skill 后直接自然语言调用 |
+| Codex / OpenClaw skill | `skills/arkham-token-ops/` | 让其他人安装 skill 后直接自然语言调用 |
 
 ---
 
@@ -203,13 +203,67 @@ python3 skills/arkham-token-ops/scripts/arkham_token_ops.py \
 
 ## 在 Codex / OpenClaw 中安装 Skill
 
-如果你的 Codex skills 目录是默认位置，可以直接把这个 skill 复制进去：
+现在仓库自带一个安装器，适合任何人在机器上快速安装这个 skill。
+
+### 方式 A：仓库内一键安装
+
+如果对方已经拿到了这个仓库，不想手动复制目录，可以直接运行：
+
+```bash
+python3 scripts/install_skill.py
+```
+
+或者：
+
+```bash
+bash scripts/install_skill.sh
+```
+
+默认会安装到：
+
+```text
+~/.codex/skills/arkham-token-ops
+```
+
+如果对方使用了自定义 `CODEX_HOME`，安装器会优先写到：
+
+```text
+$CODEX_HOME/skills/arkham-token-ops
+```
+
+可选参数：
+
+```bash
+python3 scripts/install_skill.py --force
+python3 scripts/install_skill.py --dest-root /path/to/skills
+python3 scripts/install_skill.py --link
+```
+
+说明：
+
+- `--force`：覆盖已有安装
+- `--dest-root`：指定 skills 根目录
+- `--link`：创建符号链接，适合开发时保持仓库修改实时生效
+
+### 方式 B：手动复制
+
+如果只想最直接地复制 skill 目录，也可以：
 
 ```bash
 cp -R skills/arkham-token-ops ~/.codex/skills/
 ```
 
-安装后建议重启 Codex，让它重新加载技能列表。
+### 方式 C：从 GitHub skill 路径安装
+
+如果对方的 Codex / OpenClaw 支持按 GitHub skill URL 安装，也可以直接分享：
+
+```text
+https://github.com/<owner>/<repo>/tree/<branch>/skills/arkham-token-ops
+```
+
+如果仓库是私有的，需要对方的 GitHub 账号已经有读取权限。
+
+安装后建议重启 Codex / OpenClaw，让它重新加载技能列表。
 
 重启后可以自然语言调用，例如：
 
