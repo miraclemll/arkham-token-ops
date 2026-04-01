@@ -279,7 +279,7 @@ skill 说明文件位于：
 
 ## macOS 常驻监控
 
-`arkham-token-ops` 默认使用 per-user `LaunchAgent`，适合部署到 Mac mini 等长期运行的 macOS 设备。
+`arkham-token-ops` 默认使用 per-user `LaunchAgent`，适合部署到长期运行的 macOS 设备。
 
 ### 安装一个监控
 
@@ -331,7 +331,7 @@ python3 skills/arkham-token-ops/scripts/arkham_token_ops.py monitor uninstall --
 
 ## Linux 部署
 
-如果需要在 Linux 服务器上运行旧版目标代币监控脚本，可以继续使用 `systemd`。
+如果需要在 Linux 服务器上运行原始目标代币监控脚本，可以继续使用 `systemd`。
 
 示例服务文件位于：
 
@@ -369,7 +369,7 @@ cp .env.example .env
 
 **Q: Trial API 的 datapoints 会不会很快用完？**
 
-会。无论是旧版轮询还是 skill 的持续监控，本质上都会持续调用 Arkham API。建议：
+会。无论是原始轮询脚本还是 skill 的持续监控，本质上都会持续调用 Arkham API。建议：
 
 - 只监控你真的关心的 token
 - 合理提高 `interval-sec`

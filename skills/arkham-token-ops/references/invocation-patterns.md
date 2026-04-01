@@ -54,7 +54,7 @@ python3 scripts/arkham_token_ops.py recent-transfers --chain ethereum --token-ad
 
 User intent:
 
-- “把这个 token 监控部署到 Mac mini”
+- “把这个 token 监控部署到一台长期运行的 macOS 设备”
 - “长期监控这个 token，超过 5000 美金就提醒”
 
 Flow:
