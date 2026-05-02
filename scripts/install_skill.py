@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the bundled arkham-token-ops skill into a Codex/OpenClaw skills directory."""
+"""Install the bundled token-control-monitor skill into a Codex/OpenClaw skills directory."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_SKILL_NAME = "arkham-token-ops"
+DEFAULT_SKILL_NAME = "token-control-monitor"
 
 
 def repo_root() -> Path:
@@ -30,7 +30,7 @@ def source_skill_dir(skill_name: str) -> Path:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Install the bundled arkham-token-ops skill into Codex/OpenClaw."
+        description="Install the bundled token-control-monitor skill into Codex/OpenClaw."
     )
     parser.add_argument(
         "--skill-name",

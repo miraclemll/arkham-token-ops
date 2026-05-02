@@ -4,7 +4,7 @@ The skill reads configuration in this order:
 
 1. Process environment variables
 2. `.env` in the current working directory
-3. `~/Library/Application Support/arkham-token-ops/.env`
+3. `~/Library/Application Support/token-control-monitor/.env`
 
 ## Required variables
 
@@ -28,7 +28,7 @@ For one-off local analysis, a project-local `.env` is fine.
 For unattended `launchd` monitors, prefer keeping secrets in:
 
 ```text
-~/Library/Application Support/arkham-token-ops/.env
+~/Library/Application Support/token-control-monitor/.env
 ```
 
 The `monitor install` command syncs the resolved keys into that location so the LaunchAgent can keep working after the original shell exits.

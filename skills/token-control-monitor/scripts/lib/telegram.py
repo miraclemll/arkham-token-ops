@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Telegram helpers for Arkham Token Ops."""
+"""Telegram helpers for Token Control Monitor."""
 
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Arkham API - Target Token Monitor
+Token Control Monitor - Target Token Monitor
 实时监控目标代币的大额转账，通过 Telegram 推送预警
 """
 
@@ -414,7 +414,7 @@ def generate_token_report():
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Token Monitor via Arkham API")
+    parser = argparse.ArgumentParser(description="Token Control Monitor")
     parser.add_argument("--mode", choices=["report", "poll", "websocket"],
                         default="report", help="运行模式")
     parser.add_argument("--interval", type=int, default=60,

@@ -39,7 +39,7 @@ class ArkhamClient:
             headers={
                 "API-Key": self.api_key,
                 "Accept": "application/json",
-                "User-Agent": "arkham-token-ops/1.0",
+                "User-Agent": "token-control-monitor/1.0",
             },
         )
         try:

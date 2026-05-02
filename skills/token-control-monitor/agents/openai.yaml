@@ -1,0 +1,6 @@
+interface:
+  display_name: "Token Control Monitor"
+  short_description: "Analyze project token control and transfer flows"
+  default_prompt: "Use $token-control-monitor to analyze project token control, inspect an address, or deploy a token transfer monitor on macOS."
+policy:
+  allow_implicit_invocation: true

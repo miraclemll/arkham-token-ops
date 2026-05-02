@@ -19,7 +19,7 @@ from .arkham_client import ArkhamClient, ArkhamError, parse_transfer
 from .telegram import send_message, transfer_alert_message
 
 
-APP_NAME = "arkham-token-ops"
+APP_NAME = "token-control-monitor"
 TRACKED_TX_CACHE_SIZE = 1000
 
 
@@ -54,7 +54,7 @@ def monitor_dir(name: str) -> Path:
 def monitor_paths(name: str) -> Dict[str, Path]:
     safe_name = sanitize_monitor_name(name)
     base_dir = monitor_dir(safe_name)
-    label = f"com.codex.arkham-token-monitor.{safe_name}"
+    label = f"com.codex.token-control-monitor.{safe_name}"
     return {
         "label": Path(label),
         "dir": base_dir,

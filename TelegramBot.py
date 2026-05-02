@@ -55,7 +55,7 @@ def main():
 
     test_msg = (
         "🐾 *Token Monitor 已上线*\n\n"
-        "Arkham API 监控服务启动成功\n"
+        "Token Control Monitor 服务启动成功\n"
         "监控阈值: $10,000+\n"
         "模式: 轮询 (60s)"
     )

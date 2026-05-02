@@ -20,8 +20,8 @@ Preferred flow:
 Commands:
 
 ```bash
-python3 scripts/arkham_token_ops.py resolve-token --query TOKEN_SYMBOL
-python3 scripts/arkham_token_ops.py token-report --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS
+python3 scripts/token_control_monitor.py resolve-token --query TOKEN_SYMBOL
+python3 scripts/token_control_monitor.py token-report --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS
 ```
 
 ### Address analysis
@@ -34,7 +34,7 @@ User intent:
 Command:
 
 ```bash
-python3 scripts/arkham_token_ops.py address-report --chain ethereum --address 0x...
+python3 scripts/token_control_monitor.py address-report --chain ethereum --address 0x...
 ```
 
 ### Recent or large transfers
@@ -47,7 +47,7 @@ User intent:
 Command:
 
 ```bash
-python3 scripts/arkham_token_ops.py recent-transfers --chain ethereum --token-address 0x... --usd-gte 10000 --limit 20
+python3 scripts/token_control_monitor.py recent-transfers --chain ethereum --token-address 0x... --usd-gte 10000 --limit 20
 ```
 
 ### Deploy monitoring
@@ -67,8 +67,8 @@ Flow:
 Commands:
 
 ```bash
-python3 scripts/arkham_token_ops.py monitor install --name token-main --chain ethereum --token-address 0x... --threshold-usd 5000 --interval-sec 60
-python3 scripts/arkham_token_ops.py monitor status --name token-main
+python3 scripts/token_control_monitor.py monitor install --name token-main --chain ethereum --token-address 0x... --threshold-usd 5000 --interval-sec 60
+python3 scripts/token_control_monitor.py monitor status --name token-main
 ```
 
 ## Ambiguity handling

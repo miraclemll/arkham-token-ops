@@ -1,18 +1,18 @@
 ---
-name: arkham-token-ops
-description: Analyze tokens and addresses with Arkham, inspect recent or large transfers, and deploy long-running token transfer monitors on macOS via launchd. Use this skill when a user wants Arkham-based token research, whale-transfer monitoring, address intelligence, or a reusable macOS monitoring setup for any token.
+name: token-control-monitor
+description: Analyze project-controlled token supply, known address groups, holder concentration, and transfer flows. Use this skill when a user wants token control analysis, project treasury monitoring, address intelligence, whale-transfer monitoring, or a reusable macOS monitoring setup for any token.
 ---
 
-# Arkham Token Ops
+# Token Control Monitor
 
 ## Overview
 
-Use this skill for Arkham-based token operations: token research, address intelligence, recent or large transfer inspection, and long-running token monitoring with Telegram alerts on macOS.
+Use this skill for token control operations: project treasury and holder analysis, address intelligence, recent or large transfer inspection, and long-running token monitoring with Telegram alerts on macOS. Arkham is currently one supported intelligence provider, not the skill's identity.
 
 The skill is built around one deterministic CLI entrypoint:
 
 ```bash
-python3 scripts/arkham_token_ops.py ...
+python3 scripts/token_control_monitor.py ...
 ```
 
 Prefer this script over ad hoc API calls so outputs stay stable and launchd deployments remain manageable.
@@ -30,13 +30,13 @@ Use `token-report` when the user wants token-level context such as:
 If the user provides `chain + token address`, run the report directly:
 
 ```bash
-python3 scripts/arkham_token_ops.py token-report --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS
+python3 scripts/token_control_monitor.py token-report --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS
 ```
 
 If the user only provides a symbol or fuzzy query, resolve it first:
 
 ```bash
-python3 scripts/arkham_token_ops.py resolve-token --query TOKEN_SYMBOL
+python3 scripts/token_control_monitor.py resolve-token --query TOKEN_SYMBOL
 ```
 
 Resolution rules:
@@ -50,12 +50,12 @@ Resolution rules:
 Use `address-report` when the user wants to inspect a wallet or contract:
 
 ```bash
-python3 scripts/arkham_token_ops.py address-report --chain ethereum --address 0x...
+python3 scripts/token_control_monitor.py address-report --chain ethereum --address 0x...
 ```
 
 Return:
 
-- Arkham address intelligence
+- Provider address intelligence
 - recent transfers on the requested chain
 
 If the user does not provide a chain and the context does not make it obvious, ask for the chain before acting.
@@ -65,7 +65,7 @@ If the user does not provide a chain and the context does not make it obvious, a
 Use `recent-transfers` when the user asks for recent token flows, whale activity, or large transfers:
 
 ```bash
-python3 scripts/arkham_token_ops.py recent-transfers --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS --usd-gte 10000 --limit 20
+python3 scripts/token_control_monitor.py recent-transfers --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS --usd-gte 10000 --limit 20
 ```
 
 Use this for one-off inspection. For continuous monitoring, use monitor install instead.
@@ -75,7 +75,7 @@ Use this for one-off inspection. For continuous monitoring, use monitor install 
 Use `monitor install` when the user wants persistent monitoring on a Mac:
 
 ```bash
-python3 scripts/arkham_token_ops.py monitor install --name token-main --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS --threshold-usd 5000 --interval-sec 60
+python3 scripts/token_control_monitor.py monitor install --name token-main --chain ethereum --token-address 0xYOUR_TOKEN_ADDRESS --threshold-usd 5000 --interval-sec 60
 ```
 
 Behavior:
@@ -84,15 +84,15 @@ Behavior:
 - Uses REST polling by default
 - Sends Telegram alerts only; Telegram is not used as a chat-command interface
 - Installs a per-user LaunchAgent under `~/Library/LaunchAgents/`
-- Stores monitor config and dedupe state under `~/Library/Application Support/arkham-token-ops/monitors/<name>/`
+- Stores monitor config and dedupe state under `~/Library/Application Support/token-control-monitor/monitors/<name>/`
 
 Management commands:
 
 ```bash
-python3 scripts/arkham_token_ops.py monitor status --name token-main
-python3 scripts/arkham_token_ops.py monitor logs --name token-main
-python3 scripts/arkham_token_ops.py monitor stop --name token-main
-python3 scripts/arkham_token_ops.py monitor uninstall --name token-main
+python3 scripts/token_control_monitor.py monitor status --name token-main
+python3 scripts/token_control_monitor.py monitor logs --name token-main
+python3 scripts/token_control_monitor.py monitor stop --name token-main
+python3 scripts/token_control_monitor.py monitor uninstall --name token-main
 ```
 
 ## Config Rules
@@ -103,9 +103,9 @@ Config resolution order:
 
 1. Process environment variables
 2. `.env` in the current working directory
-3. `~/Library/Application Support/arkham-token-ops/.env`
+3. `~/Library/Application Support/token-control-monitor/.env`
 
-Required for all Arkham operations:
+Required when using the Arkham intelligence provider:
 
 - `ARKHAM_API_KEY`
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CLI entrypoint for the arkham-token-ops skill."""
+"""CLI entrypoint for the token-control-monitor skill."""
 
 from __future__ import annotations
 
@@ -170,7 +170,7 @@ def handle_monitor_run(args):
 
 
 def build_parser():
-    parser = argparse.ArgumentParser(description="Arkham Token Ops CLI")
+    parser = argparse.ArgumentParser(description="Token Control Monitor CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     token_report = subparsers.add_parser("token-report", help="Analyze a token by chain and contract address.")
